@@ -9,9 +9,12 @@ use snake::*;
 fn window_conf() -> Conf {
     Conf {
         window_title: "snake-ai".to_owned(),
+        window_width: 1280,
+        window_height: 720,
         high_dpi: true,
         sample_count: 1,
-        fullscreen: true,
+        fullscreen: false,
+        window_resizable: true,
         ..Default::default()
     }
 }
