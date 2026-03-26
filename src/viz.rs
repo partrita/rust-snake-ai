@@ -19,6 +19,8 @@ pub struct Viz {
 
     is_slow_mode: bool,
     is_show_viz: bool,
+    is_show_nn: bool,
+    speed: usize,
     colors: Colors,
 }
 
@@ -48,6 +50,8 @@ impl Viz {
             best_brain: None,
             is_slow_mode: false,
             is_show_viz: false,
+            is_show_nn: true,
+            speed: 50,
             colors: if VIZ_DARK_THEME {
                 Colors::dark()
             } else {
@@ -106,7 +110,9 @@ impl Viz {
 
         self.draw_stats();
         self.draw_best_games();
-        self.draw_net();
+        if self.is_show_nn {
+            self.draw_net();
+        }
     }
 
     fn draw_best_games(&self) {
@@ -358,6 +364,24 @@ impl Viz {
                 self.colors.negative
             },
         );
+        draw_text(
+            format!("NN: {:?}", self.is_show_nn).as_str(),
+            w,
+            h + 160.0,
+            50.0,
+            if self.is_show_nn {
+                self.colors.positive
+            } else {
+                self.colors.negative
+            },
+        );
+        draw_text(
+            format!("Speed: {:?}", self.speed).as_str(),
+            w,
+            h + 200.0,
+            50.0,
+            self.colors.text,
+        );
 
         if !self.is_show_viz {
             draw_text(
@@ -368,6 +392,9 @@ impl Viz {
                 self.colors.text,
             );
             draw_text("[Tab] - Show Viz", w, h + 280.0, 30.0, self.colors.text);
+            draw_text("[N] - Toggle NN", w, h + 310.0, 30.0, self.colors.text);
+            draw_text("[+/-] - Adjust Speed", w, h + 340.0, 30.0, self.colors.text);
+            draw_text("[1-5] - Quick Speed", w, h + 370.0, 30.0, self.colors.text);
         }
     }
 
@@ -384,9 +411,11 @@ impl Viz {
         output_color
     }
 
-    pub fn update_settings(&mut self, is_viz_enabled: bool, is_slow_mode: bool) {
+    pub fn update_settings(&mut self, is_viz_enabled: bool, is_nn_enabled: bool, is_slow_mode: bool, speed: usize) {
         self.is_show_viz = is_viz_enabled;
+        self.is_show_nn = is_nn_enabled;
         self.is_slow_mode = is_slow_mode;
+        self.speed = speed;
     }
 
     fn get_node_colors(&self) -> (Vec<Color>, Vec<Color>, Vec<Color>) {

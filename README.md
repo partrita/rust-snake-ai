@@ -10,7 +10,10 @@ Built with [Rust](https://www.rust-lang.org/) and [Macroquad](https://github.com
 
 # Controls
 - `Tab` - Enable/Disable visualization
-- `Space` - Slow down the simulation
+- `Space` - Pause/Slow down the simulation
+- `N` - Toggle Neural Network visualization
+- `+` / `-` - Increase/Decrease simulation speed
+- `1` - `5` - Quick speed settings (50x, 100x, 250x, 500x, 1000x)
 
 # Glossary
 - **Neuro-evolution**: A subfield of artificial intelligence and evolutionary computation that uses evolutionary algorithms to evolve artificial neural networks.

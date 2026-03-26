@@ -22,16 +22,22 @@ impl Simulation {
         }
     }
 
-    pub fn update(&mut self, is_viz_enabled: bool, is_slow_mode: bool) {
+    pub fn update(&mut self) {
         let games_alive = self.pop.update();
         if games_alive <= 0 {
             self.end_current_genration();
             self.start_new_generation();
         }
 
-        self.viz.update_settings(is_viz_enabled, is_slow_mode);
         self.viz.update();
+    }
+
+    pub fn draw(&self) {
         self.viz.draw();
+    }
+
+    pub fn update_settings(&mut self, is_viz_enabled: bool, is_nn_enabled: bool, is_slow_mode: bool, speed: usize) {
+        self.viz.update_settings(is_viz_enabled, is_nn_enabled, is_slow_mode, speed);
     }
 
     pub fn start_new_generation(&mut self) {
