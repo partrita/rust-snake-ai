@@ -25,7 +25,7 @@ async fn main() {
     let mut is_viz_enabled = true;
     let mut is_nn_enabled = true;
     let mut is_slow_mode = false;
-    let mut speed: usize = 50;
+    let mut speed: usize = 500;
 
     loop {
         let mut iterations = 0;

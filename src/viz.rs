@@ -51,7 +51,7 @@ impl Viz {
             is_slow_mode: false,
             is_show_viz: false,
             is_show_nn: true,
-            speed: 50,
+            speed: 500,
             colors: if VIZ_DARK_THEME {
                 Colors::dark()
             } else {
