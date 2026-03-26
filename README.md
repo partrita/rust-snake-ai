@@ -60,3 +60,10 @@ cargo run --release
 - The project config file is located at `src/configs.rs`
 - Disable `VIZ_DARK_THEME` changes the theming
 - The streams feature is still experimental. A single stream with 1000 snakes will yield quick results.
+
+# Release Notes
+### [v0.0.1] - 2026-03-26
+- Added simulation speed control features
+- Optimized simulation loop to be 10x faster (default speed set to 500)
+- Added neural network visualization toggle
+- Refactored rendering logic to separated logic updates from drawing
